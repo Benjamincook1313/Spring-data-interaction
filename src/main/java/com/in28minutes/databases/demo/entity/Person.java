@@ -3,17 +3,19 @@ package com.in28minutes.databases.demo.entity;
 import jakarta.persistence.*;
 
 //import java.util.Date;
-@Entity
-//@Table(name="person")
-@NamedQuery(name="find_all_persons", query="select p from Person p")
+@Entity // JPA Automatically creates the schema for us for in memory DB
+//@Table(name="person") not needed because the class name in the same as the table name
+//@NamedQuery(name="find_all_persons", query="select p from Person p") // JPQL
 public class Person {
-  @Id
-  @GeneratedValue
+  @Id // indicates that this is a PRIMARY KEY
+  @GeneratedValue // SERIAL or auto increments the Id
   private Integer id;
 
-//  @Column(name="name")
+//  @Column(name="name") not needed because the column name on the table is the same as the variable name
   private String name;
+//  @Column(location="location")
   private String location;
+  @Column(birth_Date="birthDate")
   private String birthDate;
 
   public Person(){}
